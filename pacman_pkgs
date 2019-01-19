@@ -235,7 +235,6 @@ pygmentize
 pypy
 pypy3
 python-argparse
-python-flask
 python-gobject
 python-jedi
 python-neovim
