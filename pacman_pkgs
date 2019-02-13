@@ -127,7 +127,6 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer-vaapi
 gthumb
-gtk-vnc
 gvfs-google
 gvfs-mtp
 gvfs-smb
@@ -308,7 +307,6 @@ usbutils
 util-linux
 valgrind
 vi
-vino
 virtualbox
 w3m
 wget
