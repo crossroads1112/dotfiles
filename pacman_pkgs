@@ -127,6 +127,7 @@ gst-plugins-good
 gst-plugins-ugly
 gstreamer-vaapi
 gthumb
+gtk-vnc
 gvfs-google
 gvfs-mtp
 gvfs-smb
