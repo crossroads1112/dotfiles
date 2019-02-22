@@ -20,6 +20,7 @@ pyenv
 python-gdbgui
 python-grip
 python-jedihttp-git
+python2-neovim
 python34
 skypeforlinux-stable-bin
 slack-desktop
