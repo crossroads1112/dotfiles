@@ -316,7 +316,6 @@ wireless_tools
 wireshark-qt
 wkhtmltopdf
 words
-wpa_actiond
 xdg-user-dirs-gtk
 xf86-video-fbdev
 xf86-video-intel
@@ -364,6 +363,5 @@ xorg-xwininfo
 xorg-xwud
 xscreensaver
 xsel
-yaourt
 youtube-dl
 zsh

@@ -3,7 +3,6 @@ antergos-gsettings
 chrome-gnome-shell-git
 frotz
 ganttproject
-google-chrome
 jdk8
 kazam
 libtinfo
@@ -44,4 +43,6 @@ ttf-inconsolata-g
 ttf-mac-fonts
 ttf-monaco
 ttf-ms-fonts
+wpa_actiond
+yaourt
 zd1211-firmware
