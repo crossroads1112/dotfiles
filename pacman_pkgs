@@ -247,7 +247,6 @@ python-pip
 python-pyqt5
 python-pysmbc
 python-virtualenvwrapper
-python2-gnomekeyring
 python2-jedi
 python2-pip
 qalculate-gtk
