@@ -42,6 +42,7 @@ device-mapper
 dhcpcd
 dialog
 diffutils
+discord
 dmraid
 docker
 docker-compose
@@ -147,6 +148,7 @@ jfsutils
 john
 jq
 jre8-openjdk
+kubectl
 less
 lib32-libldap
 lib32-mesa
