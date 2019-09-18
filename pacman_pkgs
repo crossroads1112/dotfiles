@@ -37,6 +37,7 @@ crda
 cryptsetup
 cups
 cups-pk-helper
+cvc4
 dconf-editor
 device-mapper
 dhcpcd
@@ -238,7 +239,6 @@ pypy3
 python-argparse
 python-gobject
 python-jedi
-python-neovim
 python-pexpect
 python-pip
 python-pyqt5
