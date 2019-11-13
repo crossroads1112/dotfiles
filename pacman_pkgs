@@ -241,6 +241,7 @@ python-gobject
 python-jedi
 python-pexpect
 python-pip
+python-pynvim
 python-pyqt5
 python-pysmbc
 python-virtualenvwrapper
