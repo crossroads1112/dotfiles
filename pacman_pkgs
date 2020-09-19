@@ -166,7 +166,6 @@ lightdm-webkit2-greeter
 linux
 llvm
 logrotate
-lsb-release
 lsof
 lvm2
 m4
