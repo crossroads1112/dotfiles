@@ -274,6 +274,7 @@ case "$distro" in
         alias pacro='sudo pacman -Rs $(pacman -Qtdq)'
         alias pacunlock="sudo rm /var/lib/pacman/db.lck"
         alias paclock="sudo touch /var/lib/pacman/db.lck"
+        type pacupg &> /dev/null || alias pacupg="sudo pacman -Syu"
         alias pacupga='pacupg -a; sudo abs'
         alias pacc='sudo pacman -Sc'
         alias paccc='sudo pacman -Scc'
@@ -554,6 +555,7 @@ function extract() {
       (*.tar.xz|*.txz) tar --xz --help &> /dev/null \
         && tar --xz -xvf "$1" \
         || xzcat "$1" | tar xvf - ;;
+      (*.tar.zst) tar -I zstd -xvf "$1" ;;
       (*.tar.zma|*.tlz) tar --lzma --help &> /dev/null \
         && tar --lzma -xvf "$1" \
         || lzcat "$1" | tar xvf - ;;
