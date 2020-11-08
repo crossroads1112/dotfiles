@@ -214,6 +214,7 @@ orca
 os-prober
 otf-ipafont
 pacman
+pacman-contrib
 pandoc
 patch
 pavucontrol
