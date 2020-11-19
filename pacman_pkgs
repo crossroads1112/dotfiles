@@ -263,6 +263,7 @@ r
 rabbitmq
 racket
 ranger
+rclone
 reflector
 reiserfsprogs
 ripgrep
@@ -278,6 +279,7 @@ simple-scan
 simplescreenrecorder
 snapper
 splix
+sshfs
 steam
 steam-native-runtime
 sudo
@@ -301,6 +303,7 @@ tmux
 totem
 traceroute
 transmission-gtk
+trash-cli
 tree
 ttf-bitstream-vera
 ttf-dejavu
