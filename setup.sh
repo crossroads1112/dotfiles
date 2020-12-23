@@ -24,5 +24,5 @@ for lnfile in $lnfiles; do
 done
 
 [[ -d ~/.vim ]] && rm -rf ~/.vim
-mkdir -p ~/.vim/bundle/neobundle.vim
-git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+sh /tmp/installer.sh ~/.vim/dein

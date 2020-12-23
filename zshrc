@@ -151,7 +151,6 @@ alias c='clear'
 alias vimrc='vim /home/chad/.vimrc'
 alias chkupd='checkupdates'
 alias m="mpd ~/.config/mpd/mpd.conf"
-alias n="ncmpcpp"
 alias snp='sudo snp'
 alias mstat='dstat -tcmnd --top-cpu --top-mem'
 alias nfs='mount ~/Cloud/nfs'
@@ -163,7 +162,6 @@ alias ivm='vim'
 alias e='exit'
 alias q='exit'
 alias ZZ='exit'
-alias rmall='rm -rf -- *'
 alias addto='todo.sh a $(date "+%Y-%m-%d)'
 alias todo='todo.sh'
 alias treset='sudo modprobe -r psmouse; sudo modprobe psmouse'
@@ -335,17 +333,6 @@ esac
 alias smount='sudo mount'
 alias ksp='ksuperkey'
 
-alias ls='ls --color -F --group-directories-first'
-alias l='ls -lh'  
-alias ll='ls -lh'
-alias la='ls -lAFh' 
-alias lr='ls -tRFh'  
-alias lt='ls -ltFh'   
-alias ldot='ls -ld .*'
-alias lS='ls -1FSsh'
-alias lart='ls -1FcArt'
-alias lrt='ls -1Fcrt'
-alias sl='ls'
 
 
 type hub &> /dev/null && alias git=hub
@@ -649,3 +636,27 @@ export R_LIBS_USER="~/.local/share/R"
 emulate sh -c 'source /etc/profile.d/snapd.sh'
 
 log50() { kubectl -nchecks logs -ljob-name="$1" }
+
+if [[ -f /usr/share/nnn/quitcd/quitcd.bash_zsh && -z $NNN_SOURCED ]]; then
+    NNN_SOURCED=1
+    source /usr/share/nnn/quitcd/quitcd.bash_zsh
+    alias n='n -dea'
+    #alias ls='n'
+    #alias l='ls'
+    type pistol &> /dev/null && export "USE_PISTOL=1"
+    export NNN_PLUG='s:preview-tui'
+    [[ -n "$NNNLVL" ]] && PROMPT="N$NNNLVL $PROMPT"
+    alias ncp="cat ${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection} | tr '\0' '\n'"
+fi
+
+alias ls='ls --color -F --group-directories-first'
+alias l='ls -lh'  
+alias ll='ls -lh'
+alias la='ls -lAFh' 
+alias lr='ls -tRFh'  
+alias lt='ls -ltFh'   
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+alias lart='ls -1FcArt'
+alias lrt='ls -1Fcrt'
+alias sl='ls'

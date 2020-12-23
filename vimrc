@@ -4,9 +4,6 @@
 " Sets how many lines of history VIM has to remember
 set history=700
 
-" Enable filetype plugins
-filetype plugin indent on
-
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -352,89 +349,133 @@ endfunc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if empty(glob(expand('~/.vim/bundle')))
-    silent !git clone git@github.com:shougo/neobundle.vim ~/.vim/bundle
+if empty(glob(expand('~/.vim/dein/repos/github.com/Shougo/dein.vim')))
+    silent !mkdir -p ~/.vim/dein/repos/github.com/Shougo/dein.vim 
+    silent !git clone https://github.com/Shougo/dein.vim.git  ~/.vim/dein/repos/github.com/Shougo/dein.vim
 endif
 
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle/'))
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 "" General
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'vim-scripts/Colour-Sampler-Pack'
-NeoBundle 'vim-scripts/bufexplorer.zip'
-NeoBundle 'simnalamburt/vim-mundo'
-NeoBundle 'xolox/vim-misc'
 
-" C/C++
-NeoBundle 'benekastah/neomake'
-NeoBundleLazy 'vim-scripts/Conque-GDB'
+if dein#load_state('~/.vim/dein')
+    call dein#begin('~/.vim/dein')
 
-" Python
-NeoBundle 'vim-scripts/pydoc.vim'
-NeoBundle 'nvie/vim-flake8'
+    call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+        call dein#add('roxma/nvim-yarp')
+        call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
 
-" Rust
-NeoBundle 'wting/rust.vim'
+    call dein#add('Shougo/vimproc.vim', {
+    \ 'build' : {
+    \     'windows' : 'tools\\update-dll-mingw',
+    \     'cygwin' : 'make -f make_cygwin.mak',
+    \     'mac' : 'make',
+    \     'linux' : 'make',
+    \     'unix' : 'gmake',
+    \    },
+    \ })
+    call dein#add('scrooloose/nerdcommenter')
+    call dein#add('preservim/nerdtree')
+    call dein#add('croaker/mustang-vim')
+    call dein#add('vim-scripts/bufexplorer.zip')
+    call dein#add('simnalamburt/vim-mundo')
+    call dein#add('xolox/vim-misc')
+    call dein#add('ervandew/supertab')
 
-" Haskell
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'neovimhaskell/haskell-vim'
+    " C/C++
+    call dein#add('benekastah/neomake', { 'on_ft' : ['c', 'cpp']})
+    call dein#add('vim-scripts/Conque-GDB', { 'on_ft' : ['c', 'cpp'] })
 
-" LaTeX
-NeoBundleLazy 'donRaphaco/neotex'
-NeoBundleLazy 'lervag/vimtex'
+    " Python
+    call dein#add('vim-scripts/pydoc.vim', { 'on_ft' : ['python'] })
+    call dein#add('nvie/vim-flake8', { 'on_ft' : ['python'] })
 
-" Markdown
-NeoBundle 'JamshedVesuna/vim-markdown-preview'
+    " Rust
+    call dein#add('wting/rust.vim', { 'on_ft' : ['rust']})
 
-"" Multilang
-NeoBundleLazy 'Valloric/YouCompleteMe'
-"NeoBundle 'scrooloose/syntastic'
+    " Haskell
+    "NeoBundle 'eagletmt/ghcmod-vim'
+    "call dein#add('eagletmt/neco-ghc', { 'on_ft' : ['haskell'] } )
+    "call dein#add('neovimhaskell/haskell-vim', { 'on_ft' : ['haskell'] })
 
-" Coffeescript
-NeoBundle 'kchmck/vim-coffee-script'
+    " LaTeX
+    call dein#add('donRaphaco/neotex', { 'on_ft' : ['tex', 'latex'] })
+    call dein#add('lervag/vimtex', { 'on_ft' : ['tex', 'latex'] })
 
-call neobundle#end()
+    " Markdown
+    call dein#add('JamshedVesuna/vim-markdown-preview', {'on_ft' : ['markdown']})
+
+    "" Multilang
+    "NeoBundleLazy 'Valloric/YouCompleteMe'
+    "NeoBundle 'scrooloose/syntastic'
+    call dein#add('autozimu/LanguageClient-neovim', { 'rev' : 'next', 'build' : 'bash install.sh' })
+
+    " Coffeescript
+    call dein#add('kchmck/vim-coffee-script')
+
+    call dein#end()
+    call dein#save_state()
+endif
+
 filetype plugin indent on
-NeoBundleCheck
-
-nnoremap <F5> :MundoToggle<CR>
-nnoremap <F2> :BufExplorerVerticalSplit<CR>
+syntax on
 
 try 
-    colo Mustang
+    colo mustang
 catch
     colo slate
 endtry
 
-"let g:livepreview_previewer = 'evince'
-"
 
-let g:ConqueTerm_Color = 2
+let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+
+nnoremap <F5> :MundoToggle<CR>
+nnoremap <F2> :BufExplorerVerticalSplit<CR>
+let g:tex_flavor = 'latex'
+
+
+
+"Open NERDTree when nvim starts
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+"Toggle NERDTree with Ctrl-N
+map <C-n> :NERDTreeToggle<CR>
+map <C-p> :pclose<CR>
+
+"Show hidden files in NERDTree
+let NERDTreeShowHidden=1
+
+
+"let g:haskellmode_completion_ghc = 0
+"let g:necoghc_enable_detailed_browse = 1
+"let g:necoghc_use_stack = 1
+
+
+let g:LanguageClient_serverCommands = { 'rust': ['rustup', 'run', 'stable', 'rls'], 'python': ['/usr/local/bin/pyls'], 'haskell': ['hie-wrapper', '--lsp'] } 
+let g:deoplete#enable_at_startup = 1
+"call deoplete#custom#option('sources', {
+            "\ 'rust' : ['LanguageClient'],
+            "\ 'haskell' : ['LanguageClient'],
+            "\ 'python' : ['LanguageClient']
+            "\ } )
+
+let g:ConqueTerm_color = 2
 let g:ConqueTerm_CloseOnEnd = 1
 let g:ConqueTermStartMessages = 0
 
-let g:ycm_python_binary_path = '/usr/bin/python3'
-let g:ycm_rust_src_path = $RUST_SRC_PATH
+"let g:ycm_python_binary_path = '/usr/bin/python3'
+"let g:ycm_rust_src_path = $RUST_SRC_PATH
 
-let g:ycm_global_ycm_extra_conf = "/home/chad/.ycm_extra_conf.py"
-let g:ycm_filetype_whitelist = { '*': 1 }
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_python_binary_path = "python"
-let g:ycm_autoclose_preview_window_after_completion=1
+"let g:ycm_global_ycm_extra_conf = "/home/chad/.ycm_extra_conf.py"
+"let g:ycm_filetype_whitelist = { '*': 1 }
+"let g:ycm_confirm_extra_conf = 0
+"let g:ycm_python_binary_path = "python"
+"let g:ycm_autoclose_preview_window_after_completion=1
 
-let vim_markdown_preview_github=1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language Specific
@@ -442,9 +483,8 @@ let vim_markdown_preview_github=1
 
 augroup TEX
     au!
-    au FileType latex,tex NeoBundleSource vim-latex-live-preview
-    au FileType latex,tex NeoBundleSource vimtex
-    au FileType latex,tex set textwidth=90
+    "au FileType latex,tex NeoBundleSource vimtex
+    au FileType latex,tex set textwidth=70
     au FileType latex,tex set spell
 augroup END
 
@@ -486,13 +526,14 @@ augroup FUNCTIONAL
     au FileType haskell,scheme set shiftwidth=2
     au FileType haskell,scheme set sts=2
     au FileType haskell,scheme set ts=2
+    au FileType haskell setlocal omnifunc=neoghc#omnifunc
 augroup END
 
 augroup C_OR_CPP
     au!
     au FileType c,cpp set textwidth=79
     "au FileType c,cpp NeoBundleSource YouCompleteMe
-    au FileType c,cpp nnoremap <Leader>g :NeoBundleSource Conque-GDB
+    "au FileType c,cpp nnoremap <Leader>g :NeoBundleSource Conque-GDB
 augroup END
 
 
