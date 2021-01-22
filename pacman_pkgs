@@ -231,6 +231,7 @@ pypy3
 python-argparse
 python-gobject
 python-jedi
+python-numpy
 python-pexpect
 python-pip
 python-pylint
