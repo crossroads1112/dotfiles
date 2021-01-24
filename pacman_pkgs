@@ -62,6 +62,7 @@ fcrackzip
 ffmpegthumbnailer
 file-roller
 filezilla
+firefox
 firefox-developer-edition
 fish
 flex
@@ -211,7 +212,6 @@ patch
 pavucontrol
 pdfcrack
 peek
-pepper-flash
 perf
 perl-file-mimeinfo
 perl-http-server-simple
